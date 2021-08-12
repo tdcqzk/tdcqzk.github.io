@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/images/manifest.json">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-flat-top.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tdcqzk.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="markdown编辑博客的发现的一些问题（持续更行）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="markdown排版的一点知识">
+<meta property="og:url" content="http://tdcqzk.github.io/2021/08/12/markdown%E6%8E%92%E7%89%88%E7%9A%84%E4%B8%80%E7%82%B9%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:site_name" content="tdcqzk的小站">
+<meta property="og:description" content="markdown编辑博客的发现的一些问题（持续更行）">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/08/06/gHZlCUkaYqDe516.png">
+<meta property="og:image" content="https://i.loli.net/2021/08/06/gHZlCUkaYqDe516.png">
+<meta property="og:image" content="https://i.loli.net/2021/08/06/xSqAZR1wgk3JbNv.jpg">
+<meta property="og:image" content="https://i.loli.net/2021/08/06/gHZlCUkaYqDe516.png">
+<meta property="article:published_time" content="2021-08-12T12:32:39.000Z">
+<meta property="article:modified_time" content="2021-08-12T14:15:48.748Z">
+<meta property="article:author" content="tdcqzk">
+<meta property="article:tag" content="markdown">
+<meta property="article:tag" content="排版">
+<meta property="article:tag" content="博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/08/06/gHZlCUkaYqDe516.png">
+
+<link rel="canonical" href="http://tdcqzk.github.io/2021/08/12/markdown%E6%8E%92%E7%89%88%E7%9A%84%E4%B8%80%E7%82%B9%E7%9F%A5%E8%AF%86/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>markdown排版的一点知识 | tdcqzk的小站</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="tdcqzk的小站" type="application/atom+xml">
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">tdcqzk的小站</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">7</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">5</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">5</span></a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/tdcqzk" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tdcqzk.github.io/2021/08/12/markdown%E6%8E%92%E7%89%88%E7%9A%84%E4%B8%80%E7%82%B9%E7%9F%A5%E8%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://i.loli.net/2021/08/06/xSqAZR1wgk3JbNv.jpg">
+      <meta itemprop="name" content="tdcqzk">
+      <meta itemprop="description" content="天道酬勤">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tdcqzk的小站">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          markdown排版的一点知识
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-08-12 20:32:39 / 修改时间：22:15:48" itemprop="dateCreated datePublished" datetime="2021-08-12T20:32:39+08:00">2021-08-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%96%87%E5%AD%97%E6%8E%92%E7%89%88/" itemprop="url" rel="index"><span itemprop="name">文字排版</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/08/12/markdown%E6%8E%92%E7%89%88%E7%9A%84%E4%B8%80%E7%82%B9%E7%9F%A5%E8%AF%86/" class="post-meta-item leancloud_visitors" data-flag-title="markdown排版的一点知识" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/08/12/markdown%E6%8E%92%E7%89%88%E7%9A%84%E4%B8%80%E7%82%B9%E7%9F%A5%E8%AF%86/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/12/markdown%E6%8E%92%E7%89%88%E7%9A%84%E4%B8%80%E7%82%B9%E7%9F%A5%E8%AF%86/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="markdown编辑博客的发现的一些问题（持续更行）"><a href="#markdown编辑博客的发现的一些问题（持续更行）" class="headerlink" title="markdown编辑博客的发现的一些问题（持续更行）"></a>markdown编辑博客的发现的一些问题（持续更行）</h1><span id="more"></span>
+
+
+<h2 id="1-markdown的一些语法"><a href="#1-markdown的一些语法" class="headerlink" title="1.markdown的一些语法"></a>1.markdown的一些语法</h2><h3 id="（1）基本语法"><a href="#（1）基本语法" class="headerlink" title="（1）基本语法"></a>（1）基本语法</h3><blockquote>
+<p>多级标题用#</p>
+<p><strong>加粗内容</strong></p>
+<p><em>斜体内容</em></p>
+<p><em><strong>斜体加粗</strong></em></p>
+</blockquote>
+<h3 id="（2）插入表格"><a href="#（2）插入表格" class="headerlink" title="（2）插入表格"></a>（2）插入表格</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">| aaa  | bbb  | ccc  | ddd  |</span><br><span class="line">| :--: | :--: | :--: | :--: |</span><br><span class="line">|  1   |  2   |  3   |  4   |</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th align="center">aaa</th>
+<th align="center">bbb</th>
+<th align="center">ccc</th>
+<th align="center">ddd</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">4</td>
+</tr>
+</tbody></table>
+<h3 id="（3）插入数学公式"><a href="#（3）插入数学公式" class="headerlink" title="（3）插入数学公式"></a>（3）插入数学公式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line">E=mc^2</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+<p>$$<br>E=mc^2<br>$$</p>
+<h3 id="（4）插入代码"><a href="#（4）插入代码" class="headerlink" title="（4）插入代码"></a>（4）插入代码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mkdir aaa</span><br><span class="line"><span class="built_in">cd</span> aaa</span><br><span class="line">touch aaa.md</span><br><span class="line">rm aaa.md</span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line">rmdir aaa</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Fun</span> <span class="params">(n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">1</span>||n==<span class="number">2</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>；</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Fun</span>(n<span class="number">-1</span>)+<span class="built_in">Fun</span>(n<span class="number">-2</span>);</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Author ZK</span></span><br><span class="line"><span class="comment"># -*- codeing = utf-8 -*-</span></span><br><span class="line"><span class="comment"># @Time：2021-03-14 11:03</span></span><br><span class="line"><span class="comment"># @Site: </span></span><br><span class="line"><span class="comment"># @File: hw_liquid_3d.py</span></span><br><span class="line"><span class="comment"># @Software: PyCharm</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># from mpl_toolkits.mplot3d import Axes3D  # noqa: F401 unused import</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = fig.gca(projection=<span class="string">&#x27;3d&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Make the grid</span></span><br><span class="line">x, y, z = np.meshgrid(np.arange(-<span class="number">10</span>, <span class="number">10</span>, <span class="number">2</span>),</span><br><span class="line">                      np.arange(-<span class="number">10</span>, <span class="number">10</span>, <span class="number">2</span>),</span><br><span class="line">                      np.arange(-<span class="number">10</span>, <span class="number">10</span>, <span class="number">2</span>))</span><br><span class="line"></span><br><span class="line">u =<span class="number">3</span>*y * z **<span class="number">2</span></span><br><span class="line">v = x * z</span><br><span class="line">w = y</span><br><span class="line"></span><br><span class="line">ax.quiver(x, y, z, u, v, w, length=<span class="number">1</span>, normalize=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<h3 id="（5）插入链接"><a href="#（5）插入链接" class="headerlink" title="（5）插入链接"></a>（5）插入链接</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">我的博客</span>](<span class="link">[tdcqzk的小站](https://tdcqzk.github.io/</span>))</span><br></pre></td></tr></table></figure>
+<p><a href="%5Btdcqzk%E7%9A%84%E5%B0%8F%E7%AB%99%5D(https://tdcqzk.github.io/)">我的博客</a></p>
+<h3 id="（6）删除线"><a href="#（6）删除线" class="headerlink" title="（6）删除线"></a>（6）删除线</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~~啦啦啦~~</span><br></pre></td></tr></table></figure>
+<p><del>啦啦啦</del></p>
+<h3 id="（7）高亮"><a href="#（7）高亮" class="headerlink" title="（7）高亮"></a>（7）高亮</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">== 高亮 ==</span><br></pre></td></tr></table></figure>
+<p>== 高亮 ==</p>
+<h3 id="（8）任务列表"><a href="#（8）任务列表" class="headerlink" title="（8）任务列表"></a>（8）任务列表</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> [x] 吃饭</span><br><span class="line"><span class="bullet">-</span> [x] 睡觉</span><br><span class="line"><span class="bullet">-</span> [ ] 打豆豆</span><br></pre></td></tr></table></figure>
+<ul>
+<li><input checked disabled type="checkbox"> 吃饭</li>
+<li><input checked disabled type="checkbox"> 睡觉</li>
+<li><input disabled type="checkbox"> 打豆豆</li>
+</ul>
+<h3 id="（9）有序列表"><a href="#（9）有序列表" class="headerlink" title="（9）有序列表"></a>（9）有序列表</h3><ol>
+<li>aaa</li>
+<li>bbb</li>
+<li>ccc</li>
+</ol>
+<h3 id="（10）无序列表"><a href="#（10）无序列表" class="headerlink" title="（10）无序列表"></a>（10）无序列表</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- 无</span><br><span class="line">- 序</span><br><span class="line">- 啊</span><br></pre></td></tr></table></figure>
+<ul>
+<li>无</li>
+<li>序</li>
+<li>啊</li>
+</ul>
+<h3 id="（11）目录内容"><a href="#（11）目录内容" class="headerlink" title="（11）目录内容"></a>（11）目录内容</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[TOC]</span><br><span class="line">博客可能显示不出来</span><br></pre></td></tr></table></figure>
+<p>[TOC]</p>
+<h3 id="（12）添加注释"><a href="#（12）添加注释" class="headerlink" title="（12）添加注释"></a>（12）添加注释</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--这是注释--&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<!--这是注释-->
+
+<h2 id="2-浅谈插入图片"><a href="#2-浅谈插入图片" class="headerlink" title="2.浅谈插入图片"></a>2.浅谈插入图片</h2><h3 id="（1）最简单的方式"><a href="#（1）最简单的方式" class="headerlink" title="（1）最简单的方式"></a>（1）最简单的方式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">![测试](https://i.loli.net/2021/08/06/gHZlCUkaYqDe516.png)</span><br><span class="line">没居中</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2021/08/06/gHZlCUkaYqDe516.png" alt="测试"></p>
+<h3 id="（2）代码块形式，可以修改大小以及长宽，居中"><a href="#（2）代码块形式，可以修改大小以及长宽，居中" class="headerlink" title="（2）代码块形式，可以修改大小以及长宽，居中"></a>（2）代码块形式，可以修改大小以及长宽，居中</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">宽定下来，长按照比例缩放</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">align</span>=<span class="string">center</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://i.loli.net/2021/08/06/gHZlCUkaYqDe516.png&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;多重影分身&quot;</span> <span class="attr">width</span>=<span class="string">&quot;700&quot;</span> /&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">align</span>=<span class="string">center</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://i.loli.net/2021/08/06/xSqAZR1wgk3JbNv.jpg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;螺旋丸&quot;</span> <span class="attr">width</span>=<span class="string">&quot;700&quot;</span> /&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<div align="center"><img src="https://i.loli.net/2021/08/06/gHZlCUkaYqDe516.png" alt="多重影分身" width="700"></div>
+<div align="center"><img src="https://i.loli.net/2021/08/06/xSqAZR1wgk3JbNv.jpg" alt="螺旋丸" width="700"></div>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">缩放图片</span><br><span class="line">&lt;div align=center&gt;&lt;img src=&quot;https://i.loli.net/2021/08/06/gHZlCUkaYqDe516.png&quot; style=&quot;zoom: 180%;&quot; /&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<div align="center"><img src="https://i.loli.net/2021/08/06/gHZlCUkaYqDe516.png" style="zoom: 180%;"></div>
+
+
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/markdown/" rel="tag"><i class="fa fa-tag"></i> markdown</a>
+              <a href="/tags/%E6%8E%92%E7%89%88/" rel="tag"><i class="fa fa-tag"></i> 排版</a>
+              <a href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag"><i class="fa fa-tag"></i> 博客</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/08/08/%E7%81%AB%E5%BD%B1%E5%BF%8D%E8%80%85%E8%A7%82%E5%90%8E%E6%84%9F/" rel="prev" title="火影忍者观后感">
+      <i class="fa fa-chevron-left"></i> 火影忍者观后感
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      
+      <!--下方这是网易云音乐再下面是头像-->
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=784594&auto=1&height=66"></iframe>
+      
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#markdown%E7%BC%96%E8%BE%91%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%8F%91%E7%8E%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E8%A1%8C%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">markdown编辑博客的发现的一些问题（持续更行）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-markdown%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AF%AD%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">1.markdown的一些语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="nav-number">1.1.1.</span> <span class="nav-text">（1）基本语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E6%8F%92%E5%85%A5%E8%A1%A8%E6%A0%BC"><span class="nav-number">1.1.2.</span> <span class="nav-text">（2）插入表格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%883%EF%BC%89%E6%8F%92%E5%85%A5%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F"><span class="nav-number">1.1.3.</span> <span class="nav-text">（3）插入数学公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%884%EF%BC%89%E6%8F%92%E5%85%A5%E4%BB%A3%E7%A0%81"><span class="nav-number">1.1.4.</span> <span class="nav-text">（4）插入代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%885%EF%BC%89%E6%8F%92%E5%85%A5%E9%93%BE%E6%8E%A5"><span class="nav-number">1.1.5.</span> <span class="nav-text">（5）插入链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%886%EF%BC%89%E5%88%A0%E9%99%A4%E7%BA%BF"><span class="nav-number">1.1.6.</span> <span class="nav-text">（6）删除线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%887%EF%BC%89%E9%AB%98%E4%BA%AE"><span class="nav-number">1.1.7.</span> <span class="nav-text">（7）高亮</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%888%EF%BC%89%E4%BB%BB%E5%8A%A1%E5%88%97%E8%A1%A8"><span class="nav-number">1.1.8.</span> <span class="nav-text">（8）任务列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%889%EF%BC%89%E6%9C%89%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="nav-number">1.1.9.</span> <span class="nav-text">（9）有序列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%8810%EF%BC%89%E6%97%A0%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="nav-number">1.1.10.</span> <span class="nav-text">（10）无序列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%8811%EF%BC%89%E7%9B%AE%E5%BD%95%E5%86%85%E5%AE%B9"><span class="nav-number">1.1.11.</span> <span class="nav-text">（11）目录内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%8812%EF%BC%89%E6%B7%BB%E5%8A%A0%E6%B3%A8%E9%87%8A"><span class="nav-number">1.1.12.</span> <span class="nav-text">（12）添加注释</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%B5%85%E8%B0%88%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87"><span class="nav-number">1.2.</span> <span class="nav-text">2.浅谈插入图片</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="nav-number">1.2.1.</span> <span class="nav-text">（1）最简单的方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E4%BB%A3%E7%A0%81%E5%9D%97%E5%BD%A2%E5%BC%8F%EF%BC%8C%E5%8F%AF%E4%BB%A5%E4%BF%AE%E6%94%B9%E5%A4%A7%E5%B0%8F%E4%BB%A5%E5%8F%8A%E9%95%BF%E5%AE%BD%EF%BC%8C%E5%B1%85%E4%B8%AD"><span class="nav-number">1.2.2.</span> <span class="nav-text">（2）代码块形式，可以修改大小以及长宽，居中</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="tdcqzk"
+      src="https://i.loli.net/2021/08/06/xSqAZR1wgk3JbNv.jpg">
+  <p class="site-author-name" itemprop="name">tdcqzk</p>
+  <div class="site-description" itemprop="description">天道酬勤</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tdcqzk" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tdcqzk" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2319750740@qq.com" title="E-Mail → mailto:2319750740@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/tdcqzk" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;tdcqzk" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tdcqzk</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">7k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">7 分钟</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: false,
+  label: '🌓',
+  autoMatchOsTheme: false
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+if (window.darkmode && !window.darkmode.isActivated()) {
+  window.darkmode.toggle();
+  var toggleButtons = document.getElementsByClassName("darkmode-toggle");
+  for (i = 0; i < toggleButtons.length; i++) {
+    toggleButtons[i].classList.add("darkmode-toggle--white");
+  }
+}
+</script>
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = '昵称,邮箱,网址';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : 'oq9WMQpYP8I5V4eKiSn6rfTV-gzGzoHsz',
+      appKey     : 'X6Pn6X0NxIpj1UE0NqKvRdOJ',
+      placeholder: "畅所欲言",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-en' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
