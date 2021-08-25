@@ -162,6 +162,92 @@
       </tags>
   </entry>
   <entry>
+    <title>初探博客的一点感受</title>
+    <url>/2021/08/02/%E5%88%9D%E6%8E%A2%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%80%E7%82%B9%E6%84%9F%E5%8F%97/</url>
+    <content><![CDATA[<h2 id="关于学习blog"><a href="#关于学习blog" class="headerlink" title="关于学习blog"></a>关于学习blog</h2><span id="more"></span>
+
+<h3 id="1-动机"><a href="#1-动机" class="headerlink" title="1.动机"></a>1.动机</h3><p>​    下定决心要考计算机的研究生，总觉得自己从没有做过和计算机相关的实践，这次想借助假期的空空闲，一边预习计算机知识，一边搭建和完善博客，相信自己一定能够从中有所收获。</p>
+<h3 id="2-搭建中遇到过一些困难"><a href="#2-搭建中遇到过一些困难" class="headerlink" title="2.搭建中遇到过一些困难"></a>2.搭建中遇到过一些困难</h3><p>​    虽然有困难，但是一方面有一些编程基础，另一方面，积极百度寻找解决方案，还是可以hold住的</p>
+<h3 id="3-接下来的打算"><a href="#3-接下来的打算" class="headerlink" title="3.接下来的打算"></a>3.接下来的打算</h3><p>​    继续坚持下去，一方面在博客上更新自己的总结，另一方面在博客记录自己的生活</p>
+<h3 id="4-愿景"><a href="#4-愿景" class="headerlink" title="4.愿景"></a>4.愿景</h3><p>​    既然下定决心要考研计算机，就一定要付出努力，相信自己一定可以做到的。</p>
+]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+        <tag>生活</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>对docker的一点认识和理解</title>
+    <url>/2021/08/25/%E5%AF%B9docker%E7%9A%84%E4%B8%80%E7%82%B9%E8%AE%A4%E8%AF%86%E5%92%8C%E7%90%86%E8%A7%A3/</url>
+    <content><![CDATA[<h2 id="初次使用docker的一点认识"><a href="#初次使用docker的一点认识" class="headerlink" title="初次使用docker的一点认识"></a>初次使用docker的一点认识</h2><span id="more"></span>
+
+<h3 id="一、docker的原理机制"><a href="#一、docker的原理机制" class="headerlink" title="一、docker的原理机制"></a>一、docker的原理机制</h3><ol>
+<li>镜像（Image）：类似于虚拟机中的镜像，是一个包含有文件系统的面向Docker引擎的<strong>只读模板</strong>。任何应用程序运行都需要环境，而镜像就是用来提供这种运行环境的。例如一个Ubuntu镜像就是一个包含Ubuntu操作系统环境的模板，同理在该镜像上装上Apache软件，就可以称为Apache镜像。</li>
+<li>容器（Container）：类似于一个轻量级的沙盒，可以将其看作一个极简的Linux系统环境（包括root权限、进程空间、用户空间和网络空间等），以及运行在其中的应用程序。Docker引擎利用容器来运行、隔离各个应用。容器是镜像创建的应用实例，可以创建、启动、停止、删除容器，各个容器之间是是相互隔离的，互不影响。注意：镜像本身是只读的，容器从镜像启动时，Docker在镜像的上层创建一个可写层，镜像本身不变。</li>
+<li>仓库（Repository）：类似于代码仓库，这里是镜像仓库，是Docker用来集中存放镜像文件的地方。注意与注册服务器（Registry）的区别：注册服务器是存放仓库的地方，一般会有多个仓库；而仓库是存放镜像的地方，一般每个仓库存放一类镜像，每个镜像利用tag进行区分，比如Ubuntu仓库存放有多个版本（12.04、14.04等）的Ubuntu镜像。</li>
+</ol>
+<h3 id="二、docker的简单用法"><a href="#二、docker的简单用法" class="headerlink" title="二、docker的简单用法"></a>二、docker的简单用法</h3><ol>
+<li><p>镜像</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#列出所有镜像</span></span><br><span class="line">docker images <span class="comment">#或者</span></span><br><span class="line">docker images ls</span><br><span class="line"><span class="comment">#查找某个镜像是否存在</span></span><br><span class="line">docker search XXX</span><br><span class="line"><span class="comment">#拉取/下载镜像</span></span><br><span class="line">docker pull [IMAGE_NAME]:[TAG] <span class="comment">#例如</span></span><br><span class="line">docker pull mysql:latest </span><br><span class="line"><span class="comment">#删除镜像</span></span><br><span class="line">docker rm container_name/container_id<span class="comment">#先删除基于该镜像的容器</span></span><br><span class="line">docker rmi image_name/image_id</span><br><span class="line"><span class="comment">#在操作后的镜像基础上的容器打包成一个镜像</span></span><br><span class="line">docker commit -m <span class="string">&quot;ubuntu with python&quot;</span> -a </span><br><span class="line"><span class="comment">#镜像其他指令</span></span><br><span class="line">docker save -o ubuntu.tar ubuntu:python    <span class="comment"># 保存镜像, -o也可以是--output</span></span><br><span class="line">docker load -i ubuntu.tar    <span class="comment"># 加载镜像, -i也可以是--input</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p>容器</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#利用镜像创建运行一个容器</span></span><br><span class="line"><span class="comment">#-i和-t。前者表示打开并保持stdout，后者表示分配一个终端（pseudo-tty）。此时如果使用exit退出，则容器的状态处于Exit，而不是后台运行。如果想让容器一直运行，而不是停止，可以使用快捷键 ctrl+p ctrl+q 退出，此时容器的状态为Up。</span></span><br><span class="line">docker run -it ubuntu /bin/bash</span><br><span class="line">docker run -d ubuntu /bin/bash <span class="comment">#后台运行</span></span><br><span class="line"><span class="comment">#在操作后的镜像基础上的容器打包成一个镜像</span></span><br><span class="line">docker commit -m <span class="string">&quot;ubuntu with python&quot;</span> -a <span class="string">&quot;tdcqzk&quot;</span> 容器ID tdcqzk/ubuntu:python</span><br><span class="line"><span class="comment">#查看所有容器</span></span><br><span class="line">docker ps -a</span><br><span class="line"><span class="comment">#删除容器</span></span><br><span class="line">docker rm container_name/container_id</span><br><span class="line"><span class="comment">#启动、停止、重启容器命令：</span></span><br><span class="line">docker start container_name/container_id</span><br><span class="line">docker stop container_name/container_id</span><br><span class="line">docker restart container_name/container_id</span><br><span class="line">docker attach container_name/container_id <span class="comment">#进入后台运行的容器</span></span><br></pre></td></tr></table></figure></li>
+<li><p>仓库</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#拥有DockerHub账号密码基础上</span></span><br><span class="line"><span class="comment">#登录</span></span><br><span class="line">docker login<span class="comment">#然后按照提示输入账号密码</span></span><br><span class="line"><span class="comment">#推送自己的镜像到DockerHub</span></span><br><span class="line">docker push tdcqzk/ubuntu:python<span class="comment">#这里的tdcqzk要和登陆时的用户名一样</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="三、docker的用途"><a href="#三、docker的用途" class="headerlink" title="三、docker的用途"></a>三、docker的用途</h3><ol>
+<li>快速搭建一个开发环境</li>
+<li>封装开发环境以备后用</li>
+</ol>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+        <tag>命令行</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>研究博客知识点</title>
+    <url>/2021/08/03/%E7%A0%94%E7%A9%B6%E5%8D%9A%E5%AE%A2%E7%9F%A5%E8%AF%86%E7%82%B9/</url>
+    <content><![CDATA[<h2 id="研究博客知识点"><a href="#研究博客知识点" class="headerlink" title="研究博客知识点"></a>研究博客知识点</h2><span id="more"></span>
+
+<h2 id="一、使用hexo搭建博客所生成的文件夹的作用"><a href="#一、使用hexo搭建博客所生成的文件夹的作用" class="headerlink" title="一、使用hexo搭建博客所生成的文件夹的作用"></a>一、使用hexo搭建博客所生成的文件夹的作用</h2><h3 id="1-node-modules是hexo依赖包，一般动"><a href="#1-node-modules是hexo依赖包，一般动" class="headerlink" title="1.node_modules是hexo依赖包，一般动"></a>1.node_modules是hexo依赖包，一般动</h3><h3 id="2-public一般是在执行了hexo-init-后就生成了的，记录什么时候创建，删除，修改博客"><a href="#2-public一般是在执行了hexo-init-后就生成了的，记录什么时候创建，删除，修改博客" class="headerlink" title="2.public一般是在执行了hexo init 后就生成了的，记录什么时候创建，删除，修改博客"></a>2.public一般是在执行了hexo init 后就生成了的，记录什么时候创建，删除，修改博客</h3><h3 id="3-themes文件夹下就是博客主题文件，下载的主题就在这个下面"><a href="#3-themes文件夹下就是博客主题文件，下载的主题就在这个下面" class="headerlink" title="3.themes文件夹下就是博客主题文件，下载的主题就在这个下面"></a>3.themes文件夹下就是博客主题文件，下载的主题就在这个下面</h3><h3 id="4-config-yml是配置，修改了主题等等要在这里面做相应的修改"><a href="#4-config-yml是配置，修改了主题等等要在这里面做相应的修改" class="headerlink" title="4._config.yml是配置，修改了主题等等要在这里面做相应的修改"></a>4._config.yml是配置，修改了主题等等要在这里面做相应的修改</h3><h2 id="二、常规操作命令"><a href="#二、常规操作命令" class="headerlink" title="二、常规操作命令"></a>二、常规操作命令</h2><h3 id="1-始化"><a href="#1-始化" class="headerlink" title="1.始化"></a>1.始化</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-设置仓库"><a href="#2-设置仓库" class="headerlink" title="2.设置仓库"></a>2.设置仓库</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#修改_config.yml最后面</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: https://github.com/tdcqzk/tdcqzk.github.io.git  #你的仓库地址，以github为例</span><br><span class="line">  branch: main #注意创建的时候不是master的话就不是</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-部署上去"><a href="#3-部署上去" class="headerlink" title="3.部署上去"></a>3.部署上去</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean   <span class="comment">#清除缓存文件 db.json 和已生成的静态文件 public</span></span><br><span class="line">hexo g       <span class="comment">#生成网站静态文件到默认设置的 public 文件夹(hexo generate 的缩写)</span></span><br><span class="line">hexo d       <span class="comment">#自动生成网站静态文件，并部署到设定的仓库(hexo deploy 的缩写)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-创建新的博客"><a href="#4-创建新的博客" class="headerlink" title="4.创建新的博客"></a>4.创建新的博客</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new <span class="string">&quot;博客标题&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="5-删除博客"><a href="#5-删除博客" class="headerlink" title="5.删除博客"></a>5.删除博客</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#直接从文件夹删除</span><br><span class="line">#或者用命令行（回归一下删除命令）</span><br><span class="line">rm xxx              #删除文件</span><br><span class="line">rmdir xxx           #删除空文件夹</span><br><span class="line">rm -rf xxx          #删除非空文件夹</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-博客的完善美化"><a href="#6-博客的完善美化" class="headerlink" title="6.博客的完善美化"></a>6.博客的完善美化</h3><p><a href="https://zhuanlan.zhihu.com/p/106060640">个人博客第8篇——优化主题（持续更新） - 知乎 (zhihu.com)</a>)</p>
+<p><a href="https://hexo.io/zh-cn/docs/">官方文档 | Hexo</a></p>
+<h2 id="三、遇到的一些坑"><a href="#三、遇到的一些坑" class="headerlink" title="三、遇到的一些坑"></a>三、遇到的一些坑</h2><h3 id="1-报错"><a href="#1-报错" class="headerlink" title="1.报错"></a>1.报错</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo YAMLException: can not <span class="built_in">read</span> a block mapping entry; a multiline key may not be an implicit key</span><br></pre></td></tr></table></figure>
+
+<p>这意思是没有加空格，在写Blog文章或者修改配置文件时候，一定要注意加空格呀</p>
+<h3 id="2-github下载太慢了"><a href="#2-github下载太慢了" class="headerlink" title="2.github下载太慢了"></a>2.github下载太慢了</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">使用镜像下载github.com.cnpmjs.org</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-博客开头"><a href="#3-博客开头" class="headerlink" title="3.博客开头"></a>3.博客开头</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">title: markdown排版的一点知识</span><br><span class="line">date: 2021-08-12 20:32:39</span><br><span class="line">tags: [markdown, 排版, 博客] &lt;!--多个标签--&gt;</span><br><span class="line">categories：文字排版 </span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>博客</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>火影忍者观后感</title>
     <url>/2021/08/08/%E7%81%AB%E5%BD%B1%E5%BF%8D%E8%80%85%E8%A7%82%E5%90%8E%E6%84%9F/</url>
     <content><![CDATA[<h2 id="火影札记"><a href="#火影札记" class="headerlink" title="火影札记"></a>火影札记</h2><span id="more"></span>
@@ -228,61 +314,6 @@
       </categories>
       <tags>
         <tag>火影</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>初探博客的一点感受</title>
-    <url>/2021/08/02/%E5%88%9D%E6%8E%A2%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%80%E7%82%B9%E6%84%9F%E5%8F%97/</url>
-    <content><![CDATA[<h2 id="关于学习blog"><a href="#关于学习blog" class="headerlink" title="关于学习blog"></a>关于学习blog</h2><span id="more"></span>
-
-<h3 id="1-动机"><a href="#1-动机" class="headerlink" title="1.动机"></a>1.动机</h3><p>​    下定决心要考计算机的研究生，总觉得自己从没有做过和计算机相关的实践，这次想借助假期的空空闲，一边预习计算机知识，一边搭建和完善博客，相信自己一定能够从中有所收获。</p>
-<h3 id="2-搭建中遇到过一些困难"><a href="#2-搭建中遇到过一些困难" class="headerlink" title="2.搭建中遇到过一些困难"></a>2.搭建中遇到过一些困难</h3><p>​    虽然有困难，但是一方面有一些编程基础，另一方面，积极百度寻找解决方案，还是可以hold住的</p>
-<h3 id="3-接下来的打算"><a href="#3-接下来的打算" class="headerlink" title="3.接下来的打算"></a>3.接下来的打算</h3><p>​    继续坚持下去，一方面在博客上更新自己的总结，另一方面在博客记录自己的生活</p>
-<h3 id="4-愿景"><a href="#4-愿景" class="headerlink" title="4.愿景"></a>4.愿景</h3><p>​    既然下定决心要考研计算机，就一定要付出努力，相信自己一定可以做到的。</p>
-]]></content>
-      <categories>
-        <category>生活</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-        <tag>生活</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>研究博客知识点</title>
-    <url>/2021/08/03/%E7%A0%94%E7%A9%B6%E5%8D%9A%E5%AE%A2%E7%9F%A5%E8%AF%86%E7%82%B9/</url>
-    <content><![CDATA[<h2 id="研究博客知识点"><a href="#研究博客知识点" class="headerlink" title="研究博客知识点"></a>研究博客知识点</h2><span id="more"></span>
-
-<h2 id="一、使用hexo搭建博客所生成的文件夹的作用"><a href="#一、使用hexo搭建博客所生成的文件夹的作用" class="headerlink" title="一、使用hexo搭建博客所生成的文件夹的作用"></a>一、使用hexo搭建博客所生成的文件夹的作用</h2><h3 id="1-node-modules是hexo依赖包，一般动"><a href="#1-node-modules是hexo依赖包，一般动" class="headerlink" title="1.node_modules是hexo依赖包，一般动"></a>1.node_modules是hexo依赖包，一般动</h3><h3 id="2-public一般是在执行了hexo-init-后就生成了的，记录什么时候创建，删除，修改博客"><a href="#2-public一般是在执行了hexo-init-后就生成了的，记录什么时候创建，删除，修改博客" class="headerlink" title="2.public一般是在执行了hexo init 后就生成了的，记录什么时候创建，删除，修改博客"></a>2.public一般是在执行了hexo init 后就生成了的，记录什么时候创建，删除，修改博客</h3><h3 id="3-themes文件夹下就是博客主题文件，下载的主题就在这个下面"><a href="#3-themes文件夹下就是博客主题文件，下载的主题就在这个下面" class="headerlink" title="3.themes文件夹下就是博客主题文件，下载的主题就在这个下面"></a>3.themes文件夹下就是博客主题文件，下载的主题就在这个下面</h3><h3 id="4-config-yml是配置，修改了主题等等要在这里面做相应的修改"><a href="#4-config-yml是配置，修改了主题等等要在这里面做相应的修改" class="headerlink" title="4._config.yml是配置，修改了主题等等要在这里面做相应的修改"></a>4._config.yml是配置，修改了主题等等要在这里面做相应的修改</h3><h2 id="二、常规操作命令"><a href="#二、常规操作命令" class="headerlink" title="二、常规操作命令"></a>二、常规操作命令</h2><h3 id="1-始化"><a href="#1-始化" class="headerlink" title="1.始化"></a>1.始化</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-设置仓库"><a href="#2-设置仓库" class="headerlink" title="2.设置仓库"></a>2.设置仓库</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#修改_config.yml最后面</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: https://github.com/tdcqzk/tdcqzk.github.io.git  #你的仓库地址，以github为例</span><br><span class="line">  branch: main #注意创建的时候不是master的话就不是</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="3-部署上去"><a href="#3-部署上去" class="headerlink" title="3.部署上去"></a>3.部署上去</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean   <span class="comment">#清除缓存文件 db.json 和已生成的静态文件 public</span></span><br><span class="line">hexo g       <span class="comment">#生成网站静态文件到默认设置的 public 文件夹(hexo generate 的缩写)</span></span><br><span class="line">hexo d       <span class="comment">#自动生成网站静态文件，并部署到设定的仓库(hexo deploy 的缩写)</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="4-创建新的博客"><a href="#4-创建新的博客" class="headerlink" title="4.创建新的博客"></a>4.创建新的博客</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new <span class="string">&quot;博客标题&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="5-删除博客"><a href="#5-删除博客" class="headerlink" title="5.删除博客"></a>5.删除博客</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#直接从文件夹删除</span><br><span class="line">#或者用命令行（回归一下删除命令）</span><br><span class="line">rm xxx              #删除文件</span><br><span class="line">rmdir xxx           #删除空文件夹</span><br><span class="line">rm -rf xxx          #删除非空文件夹</span><br></pre></td></tr></table></figure>
-
-<h3 id="6-博客的完善美化"><a href="#6-博客的完善美化" class="headerlink" title="6.博客的完善美化"></a>6.博客的完善美化</h3><p><a href="https://zhuanlan.zhihu.com/p/106060640">个人博客第8篇——优化主题（持续更新） - 知乎 (zhihu.com)</a>)</p>
-<p><a href="https://hexo.io/zh-cn/docs/">官方文档 | Hexo</a></p>
-<h2 id="三、遇到的一些坑"><a href="#三、遇到的一些坑" class="headerlink" title="三、遇到的一些坑"></a>三、遇到的一些坑</h2><h3 id="1-报错"><a href="#1-报错" class="headerlink" title="1.报错"></a>1.报错</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo YAMLException: can not <span class="built_in">read</span> a block mapping entry; a multiline key may not be an implicit key</span><br></pre></td></tr></table></figure>
-
-<p>这意思是没有加空格，在写Blog文章或者修改配置文件时候，一定要注意加空格呀</p>
-<h3 id="2-github下载太慢了"><a href="#2-github下载太慢了" class="headerlink" title="2.github下载太慢了"></a>2.github下载太慢了</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">使用镜像下载github.com.cnpmjs.org</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-博客开头"><a href="#3-博客开头" class="headerlink" title="3.博客开头"></a>3.博客开头</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">title: markdown排版的一点知识</span><br><span class="line">date: 2021-08-12 20:32:39</span><br><span class="line">tags: [markdown, 排版, 博客] &lt;!--多个标签--&gt;</span><br><span class="line">categories：文字排版 </span><br></pre></td></tr></table></figure>
-
-
-
-]]></content>
-      <categories>
-        <category>博客</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-        <tag>hexo</tag>
       </tags>
   </entry>
 </search>

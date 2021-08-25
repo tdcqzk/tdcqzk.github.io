@@ -6,7 +6,7 @@
   <link href="http://tdcqzk.github.io/atom.xml" rel="self"/>
   
   <link href="http://tdcqzk.github.io/"/>
-  <updated>2021-08-12T14:15:48.748Z</updated>
+  <updated>2021-08-25T14:53:00.868Z</updated>
   <id>http://tdcqzk.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>对docker的一点认识和理解</title>
+    <link href="http://tdcqzk.github.io/2021/08/25/%E5%AF%B9docker%E7%9A%84%E4%B8%80%E7%82%B9%E8%AE%A4%E8%AF%86%E5%92%8C%E7%90%86%E8%A7%A3/"/>
+    <id>http://tdcqzk.github.io/2021/08/25/%E5%AF%B9docker%E7%9A%84%E4%B8%80%E7%82%B9%E8%AE%A4%E8%AF%86%E5%92%8C%E7%90%86%E8%A7%A3/</id>
+    <published>2021-08-25T13:09:51.000Z</published>
+    <updated>2021-08-25T14:53:00.868Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="初次使用docker的一点认识"><a href="#初次使用docker的一点认识" class="headerlink" title="初次使用docker的一点认识"></a>初次使用docker的一点认识</h2><span id="more"></span><h3 id="一、docker的原理机制"><a href="#一、docker的原理机制" class="headerlink" title="一、docker的原理机制"></a>一、docker的原理机制</h3><ol><li>镜像（Image）：类似于虚拟机中的镜像，是一个包含有文件系统的面向Docker引擎的<strong>只读模板</strong>。任何应用程序运行都需要环境，而镜像就是用来提供这种运行环境的。例如一个Ubuntu镜像就是一个包含Ubuntu操作系统环境的模板，同理在该镜像上装上Apache软件，就可以称为Apache镜像。</li><li>容器（Container）：类似于一个轻量级的沙盒，可以将其看作一个极简的Linux系统环境（包括root权限、进程空间、用户空间和网络空间等），以及运行在其中的应用程序。Docker引擎利用容器来运行、隔离各个应用。容器是镜像创建的应用实例，可以创建、启动、停止、删除容器，各个容器之间是是相互隔离的，互不影响。注意：镜像本身是只读的，容器从镜像启动时，Docker在镜像的上层创建一个可写层，镜像本身不变。</li><li>仓库（Repository）：类似于代码仓库，这里是镜像仓库，是Docker用来集中存放镜像文件的地方。注意与注册服务器（Registry）的区别：注册服务器是存放仓库的地方，一般会有多个仓库；而仓库是存放镜像的地方，一般每个仓库存放一类镜像，每个镜像利用tag进行区分，比如Ubuntu仓库存放有多个版本（12.04、14.04等）的Ubuntu镜像。</li></ol><h3 id="二、docker的简单用法"><a href="#二、docker的简单用法" class="headerlink" title="二、docker的简单用法"></a>二、docker的简单用法</h3><ol><li><p>镜像</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#列出所有镜像</span></span><br><span class="line">docker images <span class="comment">#或者</span></span><br><span class="line">docker images ls</span><br><span class="line"><span class="comment">#查找某个镜像是否存在</span></span><br><span class="line">docker search XXX</span><br><span class="line"><span class="comment">#拉取/下载镜像</span></span><br><span class="line">docker pull [IMAGE_NAME]:[TAG] <span class="comment">#例如</span></span><br><span class="line">docker pull mysql:latest </span><br><span class="line"><span class="comment">#删除镜像</span></span><br><span class="line">docker rm container_name/container_id<span class="comment">#先删除基于该镜像的容器</span></span><br><span class="line">docker rmi image_name/image_id</span><br><span class="line"><span class="comment">#在操作后的镜像基础上的容器打包成一个镜像</span></span><br><span class="line">docker commit -m <span class="string">&quot;ubuntu with python&quot;</span> -a </span><br><span class="line"><span class="comment">#镜像其他指令</span></span><br><span class="line">docker save -o ubuntu.tar ubuntu:python    <span class="comment"># 保存镜像, -o也可以是--output</span></span><br><span class="line">docker load -i ubuntu.tar    <span class="comment"># 加载镜像, -i也可以是--input</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></li><li><p>容器</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#利用镜像创建运行一个容器</span></span><br><span class="line"><span class="comment">#-i和-t。前者表示打开并保持stdout，后者表示分配一个终端（pseudo-tty）。此时如果使用exit退出，则容器的状态处于Exit，而不是后台运行。如果想让容器一直运行，而不是停止，可以使用快捷键 ctrl+p ctrl+q 退出，此时容器的状态为Up。</span></span><br><span class="line">docker run -it ubuntu /bin/bash</span><br><span class="line">docker run -d ubuntu /bin/bash <span class="comment">#后台运行</span></span><br><span class="line"><span class="comment">#在操作后的镜像基础上的容器打包成一个镜像</span></span><br><span class="line">docker commit -m <span class="string">&quot;ubuntu with python&quot;</span> -a <span class="string">&quot;tdcqzk&quot;</span> 容器ID tdcqzk/ubuntu:python</span><br><span class="line"><span class="comment">#查看所有容器</span></span><br><span class="line">docker ps -a</span><br><span class="line"><span class="comment">#删除容器</span></span><br><span class="line">docker rm container_name/container_id</span><br><span class="line"><span class="comment">#启动、停止、重启容器命令：</span></span><br><span class="line">docker start container_name/container_id</span><br><span class="line">docker stop container_name/container_id</span><br><span class="line">docker restart container_name/container_id</span><br><span class="line">docker attach container_name/container_id <span class="comment">#进入后台运行的容器</span></span><br></pre></td></tr></table></figure></li><li><p>仓库</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#拥有DockerHub账号密码基础上</span></span><br><span class="line"><span class="comment">#登录</span></span><br><span class="line">docker login<span class="comment">#然后按照提示输入账号密码</span></span><br><span class="line"><span class="comment">#推送自己的镜像到DockerHub</span></span><br><span class="line">docker push tdcqzk/ubuntu:python<span class="comment">#这里的tdcqzk要和登陆时的用户名一样</span></span><br></pre></td></tr></table></figure></li></ol><h3 id="三、docker的用途"><a href="#三、docker的用途" class="headerlink" title="三、docker的用途"></a>三、docker的用途</h3><ol><li>快速搭建一个开发环境</li><li>封装开发环境以备后用</li></ol>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;初次使用docker的一点认识&quot;&gt;&lt;a href=&quot;#初次使用docker的一点认识&quot; class=&quot;headerlink&quot; title=&quot;初次使用docker的一点认识&quot;&gt;&lt;/a&gt;初次使用docker的一点认识&lt;/h2&gt;</summary>
+    
+    
+    
+    <category term="linux" scheme="http://tdcqzk.github.io/categories/linux/"/>
+    
+    
+    <category term="docker" scheme="http://tdcqzk.github.io/tags/docker/"/>
+    
+    <category term="命令行" scheme="http://tdcqzk.github.io/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/"/>
+    
+  </entry>
   
   <entry>
     <title>markdown排版的一点知识</title>
